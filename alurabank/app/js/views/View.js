@@ -1,8 +1,8 @@
 class View {
     constructor(seletor) {
-        this.elemento = document.querySelector(seletor);
+        this.elemento = $(seletor);
     }
     update(model) {
-        this.elemento.innerHTML = this.template(model);
+        this.elemento.html(this.template(model));
     }
 }
