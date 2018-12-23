@@ -1,14 +1,27 @@
-var paciente = document.querySelector("#primeiro-paciente");
-console.log(paciente);
+var pacientes = document.querySelectorAll(".paciente");
 
-var peso = paciente.querySelector(".info-peso").textContent;
-var altura = paciente.querySelector(".info-altura").textContent;
-var gordura = paciente.querySelector(".info-gordura").textContent;
+for(var i = 0; i<pacientes.length; i++){
 
-console.log(peso, altura, gordura);
+    var paciente = pacientes[i];
+    console.log(paciente);
 
-var imc = peso / (altura * altura);
+    var peso = paciente.querySelector(".info-peso").textContent;
+    var altura = paciente.querySelector(".info-altura").textContent;
+    var gordura = paciente.querySelector(".info-gordura").textContent;
+    var pesoInvalido = false;
 
-console.log(imc);
+    console.log(peso, altura, gordura);
 
-paciente.querySelector(".info-imc").textContent = imc;
+    if(peso <= 0 || peso >= 300){
+        paciente.querySelector(".info-imc").textContent = "Peso inválido!"
+        pesoInvalido = true;
+        paciente.classList.add('paciente-invalido');
+    }
+
+    if(!pesoInvalido){
+        var imc = peso / (altura * altura);
+        console.log(imc);
+        paciente.querySelector(".info-imc").textContent = imc.toFixed(2);
+    }
+
+}
