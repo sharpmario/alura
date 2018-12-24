@@ -6,7 +6,8 @@
         "noImplicitAny": true,
         "removeComments": true,
         /*sistema de módulo*/
-        "module": "system"
+        "module": "system",
+        "strictNullChecks": true
     },
     "include": [
         "app/ts/**/*"
