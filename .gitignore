@@ -2,3 +2,7 @@
 .classpath
 **/.DS_Store
 **/node_modules/
+**.class
+**/.settings/**
+**.project
+**.classpath
