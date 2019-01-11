@@ -1,8 +1,38 @@
-.project
-.classpath
-**/.DS_Store
-**/node_modules/
+# compiled output
+alurapic/dist
+alurapic/tmp
+alurapic/out-tsc
+
+# IDEs and editors
+**/.idea
+**/.c9/
+**/*.launch
+**/*.sublime-workspace
 **.class
 **/.settings/**
 **.project
 **.classpath
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# dependencies
+**/node_modules/
+
+# System Files
+**/.DS_Store
+**/Thumbs.db
