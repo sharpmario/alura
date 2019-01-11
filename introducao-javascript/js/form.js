@@ -44,6 +44,10 @@ function montaTr(paciente){
     tr.appendChild(montaTd(paciente.gordura, 'info-gordura'));
     tr.appendChild(montaTd(paciente.imc,'info-imc'));
 
+    tr.addEventListener("dblclick",function(){
+        this.remove();
+    });
+
     return tr;
 }
 
