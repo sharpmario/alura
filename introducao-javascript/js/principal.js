@@ -9,15 +9,12 @@ function atualizaTabela(){
     for(var i = 0; i<pacientes.length; i++){
 
         var paciente = pacientes[i];
-        console.log(paciente);
-
+        
         var peso = paciente.querySelector(".info-peso").textContent;
         var altura = paciente.querySelector(".info-altura").textContent;
         var gordura = paciente.querySelector(".info-gordura").textContent;
         var pesoInvalido = !validaPeso(peso);
         var alturaInvalida = !validaAltura(altura);
-
-        console.log(peso, altura, gordura);
 
         if(pesoInvalido){
             paciente.querySelector(".info-imc").textContent = "Peso inválido!"
@@ -31,7 +28,6 @@ function atualizaTabela(){
 
         if(!pesoInvalido && !alturaInvalida){
             var imc = calculaImc(peso, altura);
-            console.log(imc);
             paciente.querySelector(".info-imc").textContent = imc;
         }
 
