@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Alurapic';
-  description ='Leao';
-  url='http://www.chumbogordo.com.br/wp-content/uploads/2018/11/leao.jpg';
+  photos = [
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sultan_the_Barbary_Lion.jpg/440px-Sultan_the_Barbary_Lion.jpg',
+      description: 'Leão'
+    },
+    {
+      url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Lioness_Etosha_NP.jpg/500px-Lioness_Etosha_NP.jpg',
+      description: 'Leoa'
+    }
+  ];
 }
