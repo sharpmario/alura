@@ -28,12 +28,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head>");
-		out.println("</head>");
-		out.println("<body> "+nome+" </body>");
-		out.println("</html>");
+		request.getRequestDispatcher("/novaEmpresaCriada.jsp").forward(request, response);
 	}
 
 }

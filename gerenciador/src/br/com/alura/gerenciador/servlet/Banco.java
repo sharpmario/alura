@@ -1,7 +1,9 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Classe que simuba um banco de dados
@@ -10,7 +12,7 @@ import java.util.List;
  */
 public class Banco {
 
-	private static List<Empresa> empresas = new ArrayList<>();
+	private static Set<Empresa> empresas = new HashSet<>();
 	
 	static{
 		empresas.add(Empresa.of("Google"));
@@ -22,7 +24,7 @@ public class Banco {
 		Banco.empresas.add(empresa);
 	}
 
-	public List<Empresa> getEmpresas() {
+	public Set<Empresa> getEmpresas() {
 		return Banco.empresas;
 	}
 		
