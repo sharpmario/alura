@@ -12,3 +12,16 @@ campo.on("input", function(event){
     $("#contador-palavras").text(qtdPalavras);
     
 });
+
+var tempoRestante = $("#tempo-digitacao").text();
+
+campo.one("focus", function(){
+    var id = setInterval(function(){
+        tempoRestante--;
+        $("#tempo-digitacao").text(tempoRestante);
+        if(tempoRestante==0){
+            campo.attr("disabled",true);
+            clearInterval(id);
+        }
+    },1000);
+});
