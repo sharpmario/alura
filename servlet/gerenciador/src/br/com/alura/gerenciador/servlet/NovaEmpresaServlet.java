@@ -31,7 +31,7 @@ public class NovaEmpresaServlet extends HttpServlet {
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-		
+		Math.PI;
 		Empresa empresa = new Empresa();
 		empresa.setNome(nome);
 		empresa.setDataAbertura(dataAbertura);
