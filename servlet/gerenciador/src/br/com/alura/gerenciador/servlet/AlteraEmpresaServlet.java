@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,19 +11,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import sun.java2d.pipe.SpanShapeRenderer.Simple;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
+@WebServlet("/alteraEmpresa")
+public class AlteraEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	Banco banco = new Banco();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String nome = request.getParameter("nome");
+    	Integer id = Integer.parseInt(request.getParameter("id"));
+    	Empresa empresa = banco.getEmpresa(id);
+    	
+    	String nome = request.getParameter("nome");
 		Date dataAbertura;
 		try {
 			dataAbertura = new SimpleDateFormat("dd/MM/yyyy").parse(request.getParameter("data"));
@@ -32,13 +30,8 @@ public class NovaEmpresaServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
-		Empresa empresa = new Empresa();
 		empresa.setNome(nome);
 		empresa.setDataAbertura(dataAbertura);
-		
-		Banco banco = new Banco();
-		banco.adiciona(empresa);
-		
 		response.sendRedirect("listaEmpresas");
 	}
 

@@ -8,10 +8,15 @@ public class Empresa {
 	private String nome;
 	private Date dataAbertura = new Date();
 	
-	public static Empresa of(String nome) {
+	public static Empresa of(Integer id, String nome) {
 		Empresa e = new Empresa();
+		e.setId(id);
 		e.setNome(nome);
 		return e;
+	}
+	
+	public static Empresa of(Integer id) {
+		return of(id,"");
 	}
 	
 	public Integer getId() {
@@ -42,7 +47,7 @@ public class Empresa {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -55,14 +60,16 @@ public class Empresa {
 		if (getClass() != obj.getClass())
 			return false;
 		Empresa other = (Empresa) obj;
-		if (nome == null) {
-			if (other.nome != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}
-	
+
+
+
 	
 	
 }
