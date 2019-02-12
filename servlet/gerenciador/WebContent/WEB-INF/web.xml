@@ -9,4 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <servlet>
+  	<servlet-class>br.com.alura.gerenciador.servlet.NovaEmpresaServlet</servlet-class>
+  	<servlet-name>novaEmpresa</servlet-name>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>novaEmpresa</servlet-name>
+  	<url-pattern>/cadastrar</url-pattern>
+  </servlet-mapping>
 </web-app>
