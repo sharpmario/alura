@@ -24,3 +24,11 @@
 .campo-errado{
     border: 3px solid red;
 }
+
+.placar{
+    
+}
+
+body{
+    overflow: scroll;
+}
