@@ -3,7 +3,6 @@ var contadorCaracteres = $("#contador-caracteres");
 var contadorPalavras = $("#contador-palavras");
 var tempoInicial = $("#tempo-digitacao").text();
 var campo = $(".campo-digitacao");
-var frase = $(".frase").text();
 
 function atualizaTamanhoFase(){
     var frase = $('.frase').text();
@@ -24,9 +23,9 @@ function inicializaContadores(){
     });
 }
 
-function inicializaCronometro(){
-    let tempoRestante = $("#tempo-digitacao").text();
+function inicializaCronometro(){    
     campo.one("focus", function(){
+        let tempoRestante = $("#tempo-digitacao").text();
         $("#botao-reiniciar").attr("disabled",true);
         let id = setInterval(function(){
             tempoRestante--;
@@ -46,8 +45,14 @@ function finalizaJogo(){
     inserePlacar();
 }
 
+function atualizaTempo(tempo){
+    tempoInicial = tempo;
+    $("#tempo-digitacao").text(tempo);
+}
+
 function inicializaMarcadores(){
     campo.on("input", function(){
+        var frase = $(".frase").text();
         let digitado = campo.val();
         
         if(digitado == frase.substring(0,digitado.length)){
