@@ -20,6 +20,7 @@
 	</script>
 
 	<h1>Produtos</h1>
+	<h2><fmt:message key="mensagem.bemvindo" /></h2>
 	<div id="mensagem"></div>
 	<table width="100%">
 		<tr>
@@ -31,27 +32,32 @@
 			<td width="20%">Remover?</td>
 		</tr>
 		
-		<%
-			List<Produto> produtoList = (List<Produto>) request.getAttribute("produtoList");
-			for(Produto p : produtoList) {
-		%>
-		
-			<tr id="produto<%= p.getId() %>">
-				<td><%= p.getNome().toUpperCase() %></td>
-				<td><%= p.getPreco() %></td>
-				<td><%= p.getDescricao() %></td>
-				<td><%= p.getDataInicioVenda().getTime() %></td>
-				<% if(p.isUsado()) { %>
-				<td>Sim</td>
-				<% } else { %>
-				<td>Não</td>
-				<% } %>
-				<td><a href="#" onclick="return removeProduto(<%= p.getId() %>)">Remover</a></td>
+		<c:forEach var="p" items="${produtoList}">
+			${st.count}
+			<tr id="produto${p.id}" varStatus="st">
+				<td>${p.nome.toUpperCase()}</td>
+				<td><fmt:formatNumber value="${p.preco}" type="currency"/></td>
+				<td>${p.descricao}</td>
+				<td>
+					<fmt:formatDate value="${p.dataInicioVenda.time}" pattern="EEEE, dd 'de' MMMM 'de' yyyy"/>
+				</td>
+				
+				<c:choose>
+					<c:when test="${p.usado}">
+						<td>Sim</td>
+					</c:when>
+					<c:otherwise>
+						<td>Não</td>
+					</c:otherwise>
+				</c:choose>
+				<td><a href="#" onclick="return removeProduto(${p.id})">Remover</a></td>
+				
 			</tr>
-		<%
-			}
-		%>
+		</c:forEach>
 	</table>
-	<a href="/produtos/produto/formulario">Adicionar um produto</a>
+	<c:url value="/produto/formulario" var="urlAdicionar"></c:url>
+	<a href="${urlAdicionar }"><fmt:message key="mensagem.novoProduto"/> </a>
+	
+	<c:import url="../_comum/rodape.jsp" />
 </body>
 </html>
