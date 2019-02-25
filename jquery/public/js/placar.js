@@ -68,3 +68,14 @@ function sincronizaPlacar(){
     });
     
 }
+
+function atualizaPlacar(){
+    $.get("http://localhost:3000/placar", function(data){
+        console.log(data);
+        
+        $(data).each(function(){
+            let linha = novaLinha(this.usuario, this.pontos);
+            $("tbody").prepend(linha);
+        });
+    });
+}
