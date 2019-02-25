@@ -1,4 +1,5 @@
 $("#botao-placar").click(mostraPlacar);
+$("#botao-sync").click(sincronizaPlacar);
 
 function inserePlacar(){
     let tbody = $(".placar").find("tbody");
@@ -44,4 +45,26 @@ function novaLinha(usuario, numPalavras){
 
 function mostraPlacar(){
     $(".placar").stop().slideToggle();
+}
+
+function sincronizaPlacar(){
+    var placar = [];
+    var linhas = $("tbody>tr");
+    linhas.each(function(){
+        var usuario = $(this).find("td:nth-child(1)").text();
+        var pontos = $(this).find("td:nth-child(2)").text();
+        
+        var score = {
+            usuario,
+            pontos
+        }
+
+        placar.push(score);
+    });
+
+    var dados = {placar};
+    $.post("http://localhost:3000/placar",dados,function(){
+        console.log("Post realizado");
+    });
+    
 }
