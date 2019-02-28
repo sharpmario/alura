@@ -4,7 +4,7 @@ $("#botao-sync").click(sincronizaPlacar);
 function inserePlacar(){
     let tbody = $(".placar").find("tbody");
     let numPalavras = contadorPalavras.text();
-    let usuario = "Mário";
+    let usuario = $("#usuarios").val();
     
     tbody.prepend(novaLinha(usuario, numPalavras));
     $(".placar").slideDown(500);
@@ -65,7 +65,15 @@ function sincronizaPlacar(){
     var dados = {placar};
     $.post("http://localhost:3000/placar",dados,function(){
         console.log("Post realizado");
+    }).always(function(){
+        setTimeout(function(){
+            $(".tooltip").tooltipster("close");    
+        },1200);
+    }).fail(function(){
+        $(".tooltip").tooltipster("content","Ocorreu um erro!");
     });
+
+    $(".tooltip").tooltipster("open");
     
 }
 

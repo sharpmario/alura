@@ -86,6 +86,15 @@ $(document).ready(function(){
     inicializaCronometro();
     inicializaMarcadores();
     atualizaPlacar();
+
+    $("#usuarios").selectize({
+        create: true,
+        sortField: 'text'
+    });
+
+    $(".tooltip").tooltipster({
+        trigger:'custom'
+    });
     
     $("#botao-reiniciar").click(reiniciaJogo);
 });
