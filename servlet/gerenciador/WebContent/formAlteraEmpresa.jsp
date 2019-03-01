@@ -9,9 +9,10 @@
 </head>
 <body>
 
-	<c:url value="/alteraEmpresa" var="postAction"/>
+	<c:url value="/entrada" var="postAction"/>
 
 	<form action="${postAction}" method="post">
+		<input type="hidden" value="AlteraEmpresa" name="acao" />
 		<input type="hidden" value="${empresa.id }" name="id" />
 		Nome: <input type="text" name="nome" value="${empresa.nome}"/>
 		Data Abertura: <input type="text" name="data" value="<fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>"/>

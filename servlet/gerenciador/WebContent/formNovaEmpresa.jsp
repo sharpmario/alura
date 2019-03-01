@@ -7,9 +7,10 @@
 </head>
 <body>
 
-	<c:url value="/novaEmpresa" var="postAction"/>
+	<c:url value="/entrada" var="postAction"/>
 
 	<form action="${postAction}" method="post">
+		<input type="hidden" value="NovaEmpresa" name="acao"/>
 		Nome: <input type="text" name="nome"/>
 		Data Abertura: <input type="text" name="data"/>
 		<input type="submit"/>

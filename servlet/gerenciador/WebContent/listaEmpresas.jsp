@@ -1,5 +1,5 @@
 <%@ page import="java.io.IOException"%>
-<%@ page import="br.com.alura.gerenciador.servlet.Empresa"%>
+<%@ page import="br.com.alura.gerenciador.model.Empresa"%>
 <%@ page import="java.util.Set"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -16,8 +16,8 @@
 <ul>
 	<c:forEach items="${empresas}" var="empresa">
 		<li>${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
-		<a href="/gerenciador/mostraEmpresa?id=${empresa.id }">Editar</a>
-		<a href="/gerenciador/removeEmpresa?id=${empresa.id }" onclick="return confirm('Deseja remover?')">Remover</a>
+		<a href="/gerenciador/entrada?acao=MostraEmpresa&id=${empresa.id }">Editar</a>
+		<a href="/gerenciador/entrada?acao=RemoveEmpresa&id=${empresa.id }" onclick="return confirm('Deseja remover?')">Remover</a>
 		</li>
 	</c:forEach>
 </ul>
