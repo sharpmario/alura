@@ -58,6 +58,10 @@
         <tfoot>
         </tfoot>
     </table>
-    <script src="js/lib/index.js"></script>
+    <script src="js/app/models/Negociacao.js"></script>
+    <script>
+        let n1 = new Negociacao(new Date(), 4, 3.4);
+        console.log(n1, "Volume: "+n1.volume);        
+    </script>
 </body>
 </html>
