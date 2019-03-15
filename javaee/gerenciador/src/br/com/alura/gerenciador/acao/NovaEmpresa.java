@@ -15,7 +15,7 @@ import br.com.alura.gerenciador.model.Empresa;
 public class NovaEmpresa implements Acao {
 
 	@Override
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome = request.getParameter("nome");
 		Date dataAbertura;
 		try {
@@ -31,7 +31,7 @@ public class NovaEmpresa implements Acao {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		return "redirect:entrada?acao=ListaEmpresas";
 
 	}
 

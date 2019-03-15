@@ -2,6 +2,7 @@ package br.com.alura.gerenciador.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,10 @@ public class FrontController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String param = req.getParameter("acao");
+		String jsp = null;
+		
 		if(param.equals("ListaEmpresas")) {
-			new ListaEmpresas().executa(req,resp);
+			jsp = new ListaEmpresas().executa(req,resp);
 		}else if(param.equals("RemoveEmpresa")) {
 			new RemoveEmpresa().executa(req, resp);
 		}else if(param.equals("MostraEmpresa")) {
@@ -30,6 +33,17 @@ public class FrontController extends HttpServlet{
 			new AlteraEmpresa().executa(req, resp);
 		}else if(param.equals("NovaEmpresa")) {
 			new NovaEmpresa().executa(req, resp);
+		}
+
+		String[] array = jsp.split(":");
+		switch(array[0]){
+		case "forward":
+			RequestDispatcher dispatcher = req.getRequestDispatcher(array[1]);
+			dispatcher.forward(req, resp);
+			break;
+		case "redirect":
+			resp.sendRedirect(array[1]);
+			break;
 		}
 	}
 

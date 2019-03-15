@@ -11,15 +11,17 @@ import br.com.alura.gerenciador.model.Banco;
 public class RemoveEmpresa implements Acao {
 
 	@Override
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Integer id = Integer.parseInt(request.getParameter("id"));
 		boolean removeu = new Banco().removeEmpresa(id);
 		
-		if(removeu) {
-			response.sendRedirect("entrada?acao=ListaEmpresas");
-		}else {
-			response.getWriter().println("Empresa não encontrada");
-		}
+//		if(removeu) {
+//			response.sendRedirect("entrada?acao=ListaEmpresas");
+//		}else {
+//			response.getWriter().println("Empresa não encontrada");
+//		}
+		
+		return "redirect:entrada?acao=ListaEmpresas";
 
 	}
 
