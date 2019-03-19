@@ -9,10 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.alura.gerenciador.acao.Acao;
 import br.com.alura.gerenciador.acao.AlteraEmpresa;
 import br.com.alura.gerenciador.acao.ListaEmpresas;
 import br.com.alura.gerenciador.acao.MostraEmpresa;
 import br.com.alura.gerenciador.acao.NovaEmpresa;
+import br.com.alura.gerenciador.acao.NovaEmpresaForm;
 import br.com.alura.gerenciador.acao.RemoveEmpresa;
 
 @WebServlet("/entrada")
@@ -23,22 +25,19 @@ public class FrontController extends HttpServlet{
 		String param = req.getParameter("acao");
 		String jsp = null;
 		
-		if(param.equals("ListaEmpresas")) {
-			jsp = new ListaEmpresas().executa(req,resp);
-		}else if(param.equals("RemoveEmpresa")) {
-			new RemoveEmpresa().executa(req, resp);
-		}else if(param.equals("MostraEmpresa")) {
-			new MostraEmpresa().executa(req, resp);
-		}else if(param.equals("AlteraEmpresa")) {
-			new AlteraEmpresa().executa(req, resp);
-		}else if(param.equals("NovaEmpresa")) {
-			new NovaEmpresa().executa(req, resp);
+		try {
+			Acao acao = (Acao) Class.forName("br.com.alura.gerenciador.acao."+param).newInstance();
+			jsp = acao.executa(req, resp);
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			resp.sendError(404);
+			e.printStackTrace();
+			return;
 		}
 
 		String[] array = jsp.split(":");
 		switch(array[0]){
 		case "forward":
-			RequestDispatcher dispatcher = req.getRequestDispatcher(array[1]);
+			RequestDispatcher dispatcher = req.getRequestDispatcher("WEB-INF/view/"+array[1]);
 			dispatcher.forward(req, resp);
 			break;
 		case "redirect":
