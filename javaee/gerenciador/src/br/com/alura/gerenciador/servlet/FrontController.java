@@ -20,14 +20,6 @@ public class FrontController extends HttpServlet{
 		String nomeAcao = req.getParameter("acao");
 		String jsp = null;
 		
-		boolean usuarioLogado = req.getSession().getAttribute("usuarioLogado") != null;
-		boolean acaoProtegida = !(nomeAcao.equals("LoginForm") || nomeAcao.equals("Login"));
-		
-		if(!usuarioLogado && acaoProtegida) {
-			resp.sendRedirect("entrada?acao=LoginForm");
-			return;
-		}
-		
 		try {
 			Acao acao = (Acao) Class.forName("br.com.alura.gerenciador.acao."+nomeAcao).newInstance();
 			jsp = acao.executa(req, resp);
