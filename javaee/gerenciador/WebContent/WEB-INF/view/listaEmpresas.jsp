@@ -13,7 +13,10 @@
 </head>
 <body>
 
+<c:import url="head.jsp"></c:import>
+
 <ul>
+	<li><a href="<c:url value="/entrada?acao=NovaEmpresaForm" />">Nova Empresa</a></li>
 	<c:forEach items="${empresas}" var="empresa">
 		<li>${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
 		<a href="/gerenciador/entrada?acao=MostraEmpresa&id=${empresa.id }">Editar</a>

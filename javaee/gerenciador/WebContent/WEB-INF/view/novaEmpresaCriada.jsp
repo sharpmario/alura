@@ -8,6 +8,7 @@
 <title>Nova Empresa Criada</title>
 </head>
 <body>
+	<c:import url="head.jsp"></c:import>
 	<c:if test="${not empty empresa}">
 		Empresa ${empresa.nome} cadastrada com sucesso!
 	</c:if>

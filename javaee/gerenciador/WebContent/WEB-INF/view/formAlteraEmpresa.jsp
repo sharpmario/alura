@@ -10,7 +10,7 @@
 <body>
 
 	<c:url value="/entrada" var="postAction"/>
-
+	<c:import url="head.jsp"></c:import>
 	<form action="${postAction}" method="post">
 		<input type="hidden" value="AlteraEmpresa" name="acao" />
 		<input type="hidden" value="${empresa.id }" name="id" />
