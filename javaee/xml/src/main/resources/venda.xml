@@ -1,0 +1,14 @@
+<venda moeda="real">
+	<produtos>
+		<produto>
+			<nome>livro</nome>
+			<id>123</id>
+			<valor>23.8</valor>
+		</produto>
+		<produto>
+			<nome>caderno</nome>
+			<id>342</id>
+			<valor>5.00</valor>
+		</produto>
+	</produtos>
+</venda>
