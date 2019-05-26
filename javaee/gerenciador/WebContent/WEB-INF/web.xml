@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>gerenciador</display-name>
-  
   <servlet>
     <servlet-name>novaEmpresa</servlet-name>
     <servlet-class>br.com.alura.gerenciador.servlet.NovaEmpresaServlet</servlet-class>
@@ -10,35 +9,26 @@
     <servlet-name>novaEmpresa</servlet-name>
     <url-pattern>/cadastrar</url-pattern>
   </servlet-mapping>
-  
-  <!-- filters -->
-  
   <filter>
-  	<filter-name>monitoramentoFilter</filter-name>
-  	<filter-class>br.com.alura.gerenciador.filter.MonitoramentoFilter</filter-class>
+    <filter-name>monitoramentoFilter</filter-name>
+    <filter-class>br.com.alura.gerenciador.filter.MonitoramentoFilter</filter-class>
   </filter>
-  
   <filter-mapping>
-  	<filter-name>monitoramentoFilter</filter-name>
-  	<url-pattern>/entrada</url-pattern>
+    <filter-name>monitoramentoFilter</filter-name>
+    <url-pattern>/entrada</url-pattern>
   </filter-mapping>
-  
   <filter>
-  	<filter-name>autorizacaoFilter</filter-name>
-  	<filter-class>br.com.alura.gerenciador.filter.AutorizacaoFilter</filter-class>
+    <filter-name>autorizacaoFilter</filter-name>
+    <filter-class>br.com.alura.gerenciador.filter.AutorizacaoFilter</filter-class>
   </filter>
-  
   <filter-mapping>
-  	<filter-name>autorizacaoFilter</filter-name>
-  	<url-pattern>/entrada</url-pattern>
+    <filter-name>autorizacaoFilter</filter-name>
+    <url-pattern>/entrada</url-pattern>
   </filter-mapping>
-  
-  <!-- error pages -->
   <error-page>
     <error-code>404</error-code>
     <location>/404.html</location>
   </error-page>
-  
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
