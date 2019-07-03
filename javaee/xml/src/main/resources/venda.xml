@@ -1,13 +1,16 @@
-<venda moeda="real">
+<venda moeda="real" xsi:noNamespaceSchemaLocation="venda.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	
+	<formaDePagamento>CREDITO</formaDePagamento>
 	<produtos>
 		<produto>
-			<nome>livro</nome>
 			<id>123</id>
+			<nome>livro</nome>
 			<valor>23.8</valor>
 		</produto>
 		<produto>
-			<nome>caderno</nome>
 			<id>342</id>
+			<nome>caderno</nome>
 			<valor>5.00</valor>
 		</produto>
 	</produtos>
