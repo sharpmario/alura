@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+  db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=loja
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - /home/mario/Desenvolvimento/git-repo/alura/kubernetes/mysql_volume:/var/lib/mysql
+  web:
+    image: rafanercessian/aplicacao-loja:v1
+    ports:
+      - 8080:80
+    depends_on:
+      - db
